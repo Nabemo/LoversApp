@@ -111,3 +111,77 @@ body {
     font-size: 0.8rem;
     margin-top: 20px;
 }
+
+/* Эффекты */
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
+}
+
+.heart-fall {
+    position: absolute;
+    font-size: 24px;
+    animation: float 5s infinite linear;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1000;
+}
+
+/* Конструктор */
+.tool-btn {
+    background: #444;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.tool-btn:hover {
+    background: #555;
+    transform: scale(1.05);
+}
+
+.btn-create {
+    background: linear-gradient(145deg, #00cc00, #009900);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 255, 0, 0.4);
+    transition: all 0.3s;
+}
+
+.btn-create:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 255, 0, 0.6);
+}
+
+.btn-code {
+    background: linear-gradient(145deg, #0066ff, #0044cc);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 153, 255, 0.4);
+    transition: all 0.3s;
+}
+
+.btn-code:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 153, 255, 0.6);
+}
+
+/* Анимация падающих сердечек */
+@keyframes heart-fall {
+    0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(500px) rotate(360deg); opacity: 0; }
+}

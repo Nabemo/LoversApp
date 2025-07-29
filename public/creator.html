@@ -1,20 +1,182 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Конструктор открыток</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Dancing+Script:wght@700&family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        .editor-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .slide-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            min-height: 400px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .slide-controls {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .element-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .tool-btn {
+            background: #444;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .tool-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .text-toolbar {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            display: none;
+        }
+        
+        .slide-preview {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .slide-thumb {
+            width: 40px;
+            height: 25px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+        .slide-thumb.active {
+            background: #ff00aa;
+            box-shadow: 0 0 8px #ff00aa;
+        }
+        
+        .element {
+            position: absolute;
+            cursor: move;
+            user-select: none;
+        }
+        
+        .text-element {
+            padding: 5px;
+            max-width: 80%;
+        }
+        
+        .media-element {
+            max-width: 90%;
+            max-height: 300px;
+        }
+        
+        .effect-controls {
+            margin-top: 20px;
+        }
+        
+        #videoUrl {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+            background: #333;
+            color: white;
+            border: 1px solid #555;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Конструктор открыток</h2>
-        <div id="editor">
-            <button id="addText">Добавить текст</button>
-            <button id="addImage">Добавить изображение</button>
-            <div id="preview"></div>
+    <div class="container editor-container">
+        <h2 class="title">Конструктор открыток</h2>
+        
+        <div class="controls">
+            <button id="addSlideBtn" class="btn-create">
+                <i>+</i> Создать слайд
+            </button>
+            <button id="saveCardBtn" class="btn-code">Завершить открытку</button>
         </div>
-        <button id="saveBtn" class="btn-create">Сохранить открытку</button>
+        
+        <div class="slide-controls">
+            <button id="prevSlide" class="tool-btn">← Предыдущий</button>
+            <span id="slideCounter">Слайд 1 из 1</span>
+            <button id="nextSlide" class="tool-btn">Следующий →</button>
+        </div>
+        
+        <div class="element-tools">
+            <button id="addTextBtn" class="tool-btn">Добавить текст</button>
+            <button id="addImageBtn" class="tool-btn">Загрузить изображение</button>
+            <button id="addVideoBtn" class="tool-btn">Добавить видео</button>
+            <button id="addEffectBtn" class="tool-btn">Добавить эффект</button>
+        </div>
+        
+        <div class="text-toolbar" id="textToolbar">
+            <select id="fontSelect">
+                <option value="Montserrat, sans-serif">Montserrat</option>
+                <option value="'Dancing Script', cursive">Dancing Script</option>
+                <option value="'Pacifico', cursive">Pacifico</option>
+                <option value="Arial, sans-serif">Arial</option>
+            </select>
+            
+            <input type="color" id="textColor" value="#ffffff">
+            
+            <select id="textSize">
+                <option value="16">Маленький</option>
+                <option value="24" selected>Средний</option>
+                <option value="32">Крупный</option>
+                <option value="48">Очень крупный</option>
+            </select>
+        </div>
+        
+        <div class="effect-controls" id="effectControls" style="display: none;">
+            <select id="effectSelect">
+                <option value="hearts">Дождь из сердечек</option>
+                <option value="sparks">Искры</option>
+                <option value="stars">Звёзды</option>
+            </select>
+            <button id="applyEffect" class="tool-btn">Применить</button>
+        </div>
+        
+        <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+        
+        <div class="slide-container" id="slideContainer">
+            <!-- Слайды будут добавляться сюда -->
+        </div>
     </div>
+    
     <script src="js/creator.js"></script>
 </body>
 </html>
