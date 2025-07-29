@@ -1,22 +1,48 @@
+/* Основные стили */
 body {
     background-color: #000;
     color: #fff;
     font-family: 'Arial', sans-serif;
     text-align: center;
     padding: 20px;
-    background-image: url('../assets/bg-pattern.png');
+    overflow: hidden;
+    position: relative;
 }
 
-.title {
-    color: #ff00aa;
-    text-shadow: 0 0 10px #ff00aa;
-    font-weight: bold;
-    font-size: 2.5rem;
-    margin: 40px 0;
+/* Белые падающие частицы (фон) */
+.particle {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0.6;
 }
 
-.btn {
-    background: #333;
+/* Контур с мерцанием */
+.container {
+    border: 2px solid white;
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 500px;
+    margin: 30px auto;
+    position: relative;
+    animation: glow 2s infinite alternate;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 5px white;
+    }
+    to {
+        box-shadow: 0 0 20px white, 0 0 30px white;
+    }
+}
+
+/* Кнопка "Создать открытку" (зелёная с подсветкой) */
+.btn-create {
+    background: #00aa00;
     color: white;
     border: none;
     padding: 15px 30px;
@@ -27,11 +53,52 @@ body {
     width: 80%;
     max-width: 300px;
     display: block;
+    box-shadow: 0 0 15px #00ff00;
+    animation: pulse-green 1.5s infinite alternate;
 }
 
-.pink-glow {
-    background: #ff00aa;
-    box-shadow: 0 0 15px #ff00aa;
+@keyframes pulse-green {
+    from {
+        box-shadow: 0 0 5px #00ff00;
+    }
+    to {
+        box-shadow: 0 0 20px #00ff00;
+    }
+}
+
+/* Кнопка "Ввести код" (синяя с подсветкой) */
+.btn-code {
+    background: #0066ff;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    margin: 10px auto;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 80%;
+    max-width: 300px;
+    display: block;
+    box-shadow: 0 0 15px #0099ff;
+    animation: pulse-blue 1.5s infinite alternate;
+}
+
+@keyframes pulse-blue {
+    from {
+        box-shadow: 0 0 5px #0099ff;
+    }
+    to {
+        box-shadow: 0 0 20px #0099ff;
+    }
+}
+
+/* Остальные стили остаются прежними */
+.title {
+    color: #ff00aa;
+    text-shadow: 0 0 10px #ff00aa;
+    font-weight: bold;
+    font-size: 2.5rem;
+    margin: 40px 0;
 }
 
 .comment {
