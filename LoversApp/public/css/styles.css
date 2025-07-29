@@ -1,0 +1,187 @@
+/* Основные стили */
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Белые падающие частицы (фон) */
+.particle {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+/* Контур с мерцанием */
+.container {
+    border: 2px solid white;
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 500px;
+    margin: 30px auto;
+    position: relative;
+    animation: glow 2s infinite alternate;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 5px white;
+    }
+    to {
+        box-shadow: 0 0 20px white, 0 0 30px white;
+    }
+}
+
+/* Кнопка "Создать открытку" (зелёная с подсветкой) */
+.btn-create {
+    background: #00aa00;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    margin: 10px auto;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 80%;
+    max-width: 300px;
+    display: block;
+    box-shadow: 0 0 15px #00ff00;
+    animation: pulse-green 1.5s infinite alternate;
+}
+
+@keyframes pulse-green {
+    from {
+        box-shadow: 0 0 5px #00ff00;
+    }
+    to {
+        box-shadow: 0 0 20px #00ff00;
+    }
+}
+
+/* Кнопка "Ввести код" (синяя с подсветкой) */
+.btn-code {
+    background: #0066ff;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    margin: 10px auto;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 80%;
+    max-width: 300px;
+    display: block;
+    box-shadow: 0 0 15px #0099ff;
+    animation: pulse-blue 1.5s infinite alternate;
+}
+
+@keyframes pulse-blue {
+    from {
+        box-shadow: 0 0 5px #0099ff;
+    }
+    to {
+        box-shadow: 0 0 20px #0099ff;
+    }
+}
+
+/* Остальные стили остаются прежними */
+.title {
+    color: #ff00aa;
+    text-shadow: 0 0 10px #ff00aa;
+    font-weight: bold;
+    font-size: 2.5rem;
+    margin: 40px 0;
+}
+
+.comment {
+    color: #777;
+    margin-top: 40px;
+}
+
+.support {
+    color: #444;
+    font-size: 0.8rem;
+    margin-top: 20px;
+}
+
+/* Эффекты */
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
+}
+
+.heart-fall {
+    position: absolute;
+    font-size: 24px;
+    animation: float 5s infinite linear;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1000;
+}
+
+/* Конструктор */
+.tool-btn {
+    background: #444;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.tool-btn:hover {
+    background: #555;
+    transform: scale(1.05);
+}
+
+.btn-create {
+    background: linear-gradient(145deg, #00cc00, #009900);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 255, 0, 0.4);
+    transition: all 0.3s;
+}
+
+.btn-create:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 255, 0, 0.6);
+}
+
+.btn-code {
+    background: linear-gradient(145deg, #0066ff, #0044cc);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 153, 255, 0.4);
+    transition: all 0.3s;
+}
+
+.btn-code:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 153, 255, 0.6);
+}
+
+/* Анимация падающих сердечек */
+@keyframes heart-fall {
+    0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(500px) rotate(360deg); opacity: 0; }
+}

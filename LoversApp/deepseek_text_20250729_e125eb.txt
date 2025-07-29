@@ -1,0 +1,14 @@
+/lovers-app
+├── vercel.json
+├── public/
+│   ├── index.html
+│   ├── creator.html
+│   ├── viewer.html
+│   ├── css/
+│   │   └── styles.css
+│   ├── js/
+│   │   ├── app.js
+│   │   ├── creator.js
+│   │   └── viewer.js
+│   └── assets/
+│       └── bg-pattern.png
